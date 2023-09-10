@@ -10,5 +10,5 @@ wget https://get.symfony.com/cli/installer -O - | bash
 symfony server:start -d
 
 <h1>Migration</h1>
-php bin/console doctrine:migrations:migrate
+symfony console doctrine:migrations:migrate
 
