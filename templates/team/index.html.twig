@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div>
+        {{ form_errors(form) }}
+    </div>
+
+    {{ form_row(form.name) }}
+
+    <br>
+
+    <div>
+        <button>Создать команду</button>
+    </div>
+    {{ form_end(form) }}
+
+    <br>
+    <hr>
+    <br>
+
+    <div>Список команд</div>
+
+    {% if teams %}
+        <ul>
+            {% for team in teams %}
+                <li>
+                    {{ team.name }}
+                    <form method="post" action="{{ path('team_delete', {'id': team.id}) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ team.id) }}">
+                        <button>Удалить</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

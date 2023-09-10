@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div>
+        {% if tournament %}
+            {{ tournament.name }}
+        {% endif %}
+    </div>
+
+    <div>
+        {% for round in rounds %}
+            <div>День</div>
+
+            {% for teams in round %}
+                {{ teams|join(' : ') }} <br>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

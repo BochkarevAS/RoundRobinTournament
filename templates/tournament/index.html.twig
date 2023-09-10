@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div>Список турниров</div>
+
+    {% if tournaments %}
+        <ul>
+            {% for tournament in tournaments %}
+                <li>
+                    <a href="{{ path('tournament_show', {'slug': tournament.slug, 'id': tournament.id}) }}">{{ tournament.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
